@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Soumission Remplacement de Thermos Gratuite | Vitrerie Prestige</title>
+  <meta name="description" content="Fenêtres embuées? Changez seulement le thermo — une fraction du prix d'une fenêtre neuve. Garantie 25 ans, installé en 2 semaines, financement dès 24 $/mois. Soumission gratuite — Grand Montréal, Rive-Sud, Rive-Nord, Laurentides, Lanaudière, Montérégie.">
+  <!-- ⚠️ URL DE DÉPLOIEMENT VERCEL — les balises OG doivent être ABSOLUES (Facebook n'exécute pas de JS).
+       Défaut ci-dessous = projet Vercel nommé « vitrerie-prestige » → vitrerie-prestige.vercel.app.
+       Si tu nommes le projet autrement, remplace le domaine dans CES 2 LIGNES seulement. -->
+  <meta property="og:url" content="https://vitrerie-prestige.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Fenêtres embuées? Changez seulement le thermo et économisez des milliers">
+  <meta property="og:description" content="Garantie 25 ans · Installé en 2 semaines · Financement dès 24 $/mois. Soumission gratuite et rapide.">
+  <meta property="og:locale" content="fr_CA">
+  <meta property="og:image" content="https://vitrerie-prestige.vercel.app/og-vitrerie-prestige.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Police : Archivo (substitut libre le plus proche d'Aeonik, la police de marque du client).
+       ⚠️ Si l'agence détient la licence Aeonik, remplacer par les @font-face du client. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       TRACKING
+       · GoHighLevel External Tracking : chargé en tête (capture des leads = fonction
+         essentielle du service demandé par le visiteur). tk_636076de42eb4b86b9901302dfb7c302
+       · Pixel Meta / dataset ID 2406208893520678 : chargé UNIQUEMENT après consentement Loi 25
+         (voir loadMarketingTags). CAPI côté serveur dans GHL (token JAMAIS dans ce fichier).
+       · GTM : aucun ID fourni → laissé vide (optionnel).
+       ═══════════════════════════════════════════════════════════════ -->
+  <script src="https://link.msgsndr.com/js/external-tracking.js"
+          data-tracking-id="tk_636076de42eb4b86b9901302dfb7c302"></script>
+
+  <style>
+    /* ── Charte officielle Vitrerie Prestige (couleurs extraites du fichier logo SVG) ──
+       #005FAB (bleu logo) · #5EADC8 (bleu pâle logo) · #08374C (marine du site) · Aeonik/Archivo */
+    :root {
+      --marine:      #08374C;
+      --marine-fonce:#052534;
+      --bleu:        #005FAB;
+      --bleu-fonce:  #004A85;
+      --pale:        #5EADC8;
+      --glace:       #EFF6FA;
+      --ligne:       #DCE8EF;
+      --texte:       #0B3B52;
+      --texte-doux:  #4A6472;
+      --etoile:      #F6B01E;
+      --ok:          #1E8E4E;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:"Aeonik","Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; color:var(--texte); background:#fff; line-height:1.6; -webkit-font-smoothing:antialiased; }
+    img, svg { display:block; }
+    a { color:inherit; }
+    .conteneur { width:100%; max-width:1140px; margin:0 auto; padding:0 22px; }
+    section { padding:76px 0; }
+    @media (max-width:700px){ section { padding:52px 0; } }
+    h2 { font-size:clamp(1.6rem,4.4vw,2.35rem); line-height:1.15; letter-spacing:-.02em; color:var(--marine); font-weight:800; }
+    .sous-h2 { color:var(--texte-doux); margin-top:12px; font-size:1.06rem; max-width:640px; }
+    .centre { text-align:center; }
+    .centre .sous-h2 { margin-left:auto; margin-right:auto; }
+    .kicker { display:inline-flex; align-items:center; gap:8px; text-transform:uppercase; letter-spacing:.14em; font-size:.76rem; font-weight:700; color:var(--bleu); margin-bottom:14px; }
+    .kicker::before { content:""; width:8px; height:8px; border-radius:99px; background:var(--pale); flex:none; }
+
+    /* ── Logo (reconstruit en vectoriel incrusté — aucune dépendance externe) ── */
+    .logo { display:inline-flex; align-items:center; gap:12px; text-decoration:none; }
+    .logo-mark { height:38px; width:auto; }
+    .logo-texte { display:flex; flex-direction:column; line-height:1; }
+    .logo-l1 { font-weight:800; font-size:1.06rem; letter-spacing:.14em; color:var(--bleu); }
+    .logo-l2 { font-weight:600; font-size:.6rem; letter-spacing:.42em; color:var(--pale); margin-top:4px; }
+    footer .logo-l1 { color:#fff; }
+
+    /* ── Boutons ── */
+    .cta { display:inline-block; background:var(--bleu); color:#fff; font-weight:700; font-size:1.02rem; font-family:inherit; padding:16px 30px; border:none; border-radius:12px; text-decoration:none; text-align:center; cursor:pointer; transition:background .15s, transform .15s, box-shadow .15s; box-shadow:0 10px 24px rgba(0,95,171,.28); letter-spacing:.01em; }
+    .cta:hover { background:var(--bleu-fonce); transform:translateY(-2px); box-shadow:0 14px 30px rgba(0,95,171,.34); }
+    .cta-bloc { width:100%; }
+
+    /* ── 0. Bandeau promo ── */
+    .bandeau-promo { background:linear-gradient(90deg,var(--marine-fonce),var(--bleu)); color:#fff; text-align:center; font-size:.92rem; padding:10px 16px; }
+    .bandeau-promo a { color:#BBE0F0; font-weight:700; text-underline-offset:3px; }
+
+    /* ── 1. Header sticky ── */
+    header { position:sticky; top:0; z-index:900; background:rgba(255,255,255,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--ligne); }
+    .header-int { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:13px 22px; max-width:1140px; margin:0 auto; }
+    .header-droite { display:flex; align-items:center; gap:18px; }
+    .cta-header { padding:11px 20px; font-size:.92rem; box-shadow:none; }
+
+    /* ── 2. Hero marine (mobile-first : kicker → H1 → FORMULAIRE → reste) ── */
+    #hero { background:var(--marine); background-image:radial-gradient(720px 340px at 85% -10%, rgba(94,173,200,.22), transparent 65%), radial-gradient(560px 300px at -10% 108%, rgba(0,95,171,.30), transparent 60%); padding:44px 0 60px; }
+    .hero-grille { display:flex; flex-direction:column; gap:26px; }
+    .hero-grille .hero-haut { order:1; }
+    .hero-grille .form-carte { order:2; }
+    .hero-grille .hero-suite { order:3; }
+    #hero .kicker { color:var(--pale); }
+    h1 { font-size:clamp(1.8rem,6vw,3.1rem); line-height:1.08; letter-spacing:-.025em; color:#fff; font-weight:800; }
+    .sous-titre { margin-top:18px; font-size:1.1rem; color:#BFD8E4; max-width:520px; }
+    .chips { list-style:none; margin-top:22px; display:flex; flex-wrap:wrap; gap:10px; }
+    .chips li { font-size:.9rem; color:#EAF4F9; background:rgba(255,255,255,.07); border:1px solid rgba(94,173,200,.35); border-radius:99px; padding:8px 15px; }
+    .chips li::before { content:"✓ "; color:var(--pale); font-weight:800; }
+    .preuve { margin-top:20px; font-size:.98rem; color:#BFD8E4; }
+    .preuve strong { color:#fff; }
+    .etoiles { color:var(--etoile); letter-spacing:2px; }
+    @media (min-width:920px){
+      #hero { padding:72px 0 84px; }
+      .hero-grille { display:grid; grid-template-columns:1.05fr .95fr; grid-template-areas:"haut form" "suite form"; gap:8px 56px; align-items:start; }
+      .hero-grille .hero-haut { grid-area:haut; }
+      .hero-grille .hero-suite { grid-area:suite; }
+      .hero-grille .form-carte { grid-area:form; }
+    }
+
+    /* ── Marquee signature (comme sur le site du client) ── */
+    .marquee { overflow:hidden; background:#fff; border-bottom:1px solid var(--ligne); padding:18px 0; }
+    .marquee-int { display:inline-flex; white-space:nowrap; animation:defile 30s linear infinite; }
+    .marquee span { font-weight:800; text-transform:uppercase; letter-spacing:.06em; font-size:1.35rem; color:var(--marine); padding-right:26px; }
+    .marquee span::after { content:"•"; color:var(--pale); margin-left:26px; }
+    @keyframes defile { to { transform:translateX(-50%); } }
+
+    /* ── Formulaire multi-étapes ── */
+    .form-carte { background:#fff; border-radius:20px; padding:26px 24px 22px; box-shadow:0 30px 70px rgba(3,26,38,.35); position:relative; overflow:hidden; }
+    .form-carte::before { content:""; position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,var(--bleu),var(--pale)); }
+    .form-titre { text-align:center; font-size:.74rem; font-weight:800; letter-spacing:.16em; color:var(--ok); text-transform:uppercase; }
+    .form-question { text-align:center; font-size:1.24rem; line-height:1.25; margin-top:10px; color:var(--marine); font-weight:800; letter-spacing:-.01em; }
+    .progress { margin:16px 0 8px; }
+    .progress-libelle { font-size:.76rem; color:var(--texte-doux); text-align:right; margin-bottom:6px; }
+    .progress-piste { height:6px; background:var(--glace); border-radius:99px; overflow:hidden; }
+    .progress-barre { height:100%; width:33%; background:linear-gradient(90deg,var(--bleu),var(--pale)); border-radius:99px; transition:width .25s; }
+    .choix-liste { display:grid; gap:10px; margin-top:14px; }
+    .choix { display:flex; align-items:center; gap:13px; width:100%; text-align:left; background:var(--glace); border:2px solid transparent; border-radius:14px; padding:14px 16px; cursor:pointer; font-family:inherit; font-size:1rem; color:var(--texte); transition:border-color .12s, background .12s, transform .12s; }
+    .choix:hover { border-color:var(--bleu); background:#fff; transform:translateY(-1px); }
+    .choix .emoji { font-size:1.5rem; line-height:1; }
+    .choix .libelle { font-weight:700; display:block; color:var(--marine); }
+    .choix .micro { display:block; font-size:.84rem; color:var(--texte-doux); font-weight:400; margin-top:1px; }
+    .champs { display:grid; gap:10px; margin-top:14px; }
+    .champs input { width:100%; padding:14px 15px; border:2px solid var(--ligne); border-radius:12px; font-size:1rem; font-family:inherit; color:var(--texte); background:#fff; }
+    .champs input:focus { outline:none; border-color:var(--bleu); }
+    .champs input::placeholder { color:#8AA3B0; }
+    .rappel-offre { margin-top:14px; text-align:center; font-size:.92rem; background:var(--glace); border:1px dashed var(--pale); border-radius:12px; padding:10px 12px; color:var(--marine); }
+    .form-nav { display:flex; gap:10px; margin-top:16px; align-items:center; }
+    .btn-retour { background:none; border:none; color:var(--texte-doux); font-size:.95rem; cursor:pointer; padding:12px 8px; font-family:inherit; flex:none; }
+    .reassurance { text-align:center; font-size:.84rem; color:var(--texte-doux); margin-top:14px; }
+    .legal-form { text-align:center; font-size:.74rem; color:#8AA3B0; margin-top:10px; }
+    .form-succes { text-align:center; padding:34px 8px; }
+    .form-succes .gros { font-size:2.6rem; }
+    .form-succes h3 { color:var(--marine); margin-top:10px; font-size:1.35rem; }
+    .form-succes p { color:var(--texte-doux); margin-top:10px; }
+
+    /* ── 3. Stats ── */
+    #stats { background:#fff; padding:44px 0; border-bottom:1px solid var(--ligne); }
+    .stats-grille { display:grid; grid-template-columns:repeat(2,1fr); gap:28px 16px; text-align:center; }
+    .stat .chiffre { font-size:2.1rem; font-weight:800; letter-spacing:-.03em; color:var(--bleu); }
+    .stat .desc { font-size:.88rem; color:var(--texte-doux); margin-top:3px; }
+    @media (min-width:768px){
+      .stats-grille { grid-template-columns:repeat(4,1fr); }
+      .stat + .stat { border-left:1px solid var(--ligne); }
+    }
+
+    /* ── 4. Problème ── */
+    #probleme { background:var(--glace); }
+    .douleurs { display:grid; gap:16px; margin-top:34px; }
+    @media (min-width:768px){ .douleurs { grid-template-columns:repeat(3,1fr); } }
+    .douleur { background:#fff; border:1px solid var(--ligne); border-radius:18px; padding:26px 22px; }
+    .douleur .emoji { font-size:1.5rem; background:var(--glace); width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; }
+    .douleur h3 { margin-top:14px; font-size:1.06rem; color:var(--marine); }
+    .douleur p { margin-top:7px; font-size:.95rem; color:var(--texte-doux); }
+    .comparo { margin-top:20px; display:grid; gap:16px; }
+    @media (min-width:768px){ .comparo { grid-template-columns:1fr 1fr; } }
+    .comparo-carte { border-radius:18px; padding:28px 26px; }
+    .comparo-carte.mauvais { background:#fff; border:1px solid var(--ligne); }
+    .comparo-carte.bon { background:var(--marine); color:#fff; }
+    .comparo-carte h3 { font-size:1.12rem; letter-spacing:-.01em; }
+    .comparo-carte.bon h3 { color:#fff; }
+    .comparo-carte ul { list-style:none; margin-top:14px; display:grid; gap:9px; font-size:.97rem; }
+    .comparo-carte.mauvais li { color:var(--texte-doux); }
+    .comparo-carte.mauvais li::before { content:"✗  "; color:#C0392B; font-weight:800; }
+    .comparo-carte.bon li { color:#DCEBF3; }
+    .comparo-carte.bon li::before { content:"✓  "; color:var(--pale); font-weight:800; }
+    .badge-bon { display:inline-block; background:var(--pale); color:var(--marine); font-size:.72rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; border-radius:99px; padding:5px 14px; margin-bottom:14px; }
+
+    /* ── 5. Pourquoi nous ── */
+    .benefices { display:grid; gap:16px; margin-top:34px; }
+    @media (min-width:700px){ .benefices { grid-template-columns:repeat(2,1fr); } }
+    @media (min-width:1024px){ .benefices { grid-template-columns:repeat(4,1fr); } }
+    .benefice { background:#fff; border:1px solid var(--ligne); border-radius:18px; padding:26px 22px; transition:transform .15s, box-shadow .15s; }
+    .benefice:hover { transform:translateY(-3px); box-shadow:0 14px 34px rgba(8,55,76,.08); }
+    .benefice .emoji { font-size:1.5rem; background:var(--glace); width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; }
+    .benefice h3 { margin-top:14px; font-size:1.04rem; color:var(--marine); }
+    .benefice p { margin-top:7px; font-size:.94rem; color:var(--texte-doux); }
+
+    /* ── 6. Processus ── */
+    #processus { background:var(--glace); }
+    .etapes { display:grid; gap:16px; margin-top:34px; }
+    @media (min-width:768px){ .etapes { grid-template-columns:repeat(3,1fr); } }
+    .etape { background:#fff; border:1px solid var(--ligne); border-radius:18px; padding:28px 24px; }
+    .etape .num { display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:99px; background:var(--bleu); color:#fff; font-weight:800; font-size:1.15rem; }
+    .etape h3 { margin-top:14px; font-size:1.08rem; color:var(--marine); }
+    .etape p { margin-top:7px; font-size:.95rem; color:var(--texte-doux); }
+
+    /* ── 7. Citation ── */
+    .citation { background:var(--marine); color:#fff; text-align:center; position:relative; overflow:hidden; }
+    .citation::before { content:"“"; position:absolute; top:-40px; left:50%; transform:translateX(-50%); font-size:16rem; color:rgba(94,173,200,.16); font-family:Georgia,serif; line-height:1; }
+    .citation blockquote { font-size:clamp(1.2rem,3.2vw,1.65rem); line-height:1.45; max-width:860px; margin:16px auto 0; font-weight:500; letter-spacing:-.01em; position:relative; }
+    .citation .auteur { margin-top:18px; color:#9CC3D6; font-size:.95rem; }
+
+    /* ── 8. Financement ── */
+    #finance .gros-chiffres { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:34px 0 8px; }
+    @media (max-width:700px){ #finance .gros-chiffres { grid-template-columns:1fr; } }
+    .gros-chiffre { background:var(--glace); border-radius:18px; padding:26px 20px; text-align:center; }
+    .gros-chiffre .valeur { font-size:2.2rem; font-weight:800; color:var(--bleu); letter-spacing:-.03em; }
+    .gros-chiffre .desc { font-size:.9rem; color:var(--texte-doux); margin-top:3px; }
+    .points-fin { list-style:none; margin-top:22px; display:grid; gap:10px; max-width:560px; }
+    .points-fin li::before { content:"✓  "; color:var(--ok); font-weight:800; }
+    .mention-credit { font-size:.8rem; color:#8AA3B0; margin-top:18px; }
+    #finance .cta { margin-top:22px; }
+
+    /* ── 9. Témoignages ── */
+    #reviews { background:var(--glace); }
+    .reviews-grille { display:grid; gap:16px; margin-top:34px; }
+    @media (min-width:700px){ .reviews-grille { grid-template-columns:repeat(2,1fr); } }
+    @media (min-width:1024px){ .reviews-grille { grid-template-columns:repeat(3,1fr); } }
+    .review { background:#fff; border:1px solid var(--ligne); border-radius:18px; padding:24px 22px; font-size:.95rem; display:flex; flex-direction:column; }
+    .review p { margin-top:10px; color:var(--texte); flex:1; }
+    .review .auteur { margin-top:14px; font-weight:700; font-size:.88rem; color:var(--marine); }
+    .review .source { color:var(--texte-doux); font-weight:400; }
+
+    /* ── 12. FAQ ── */
+    #faq .faq-liste { margin-top:30px; border-top:1px solid var(--ligne); }
+    #faq details { border-bottom:1px solid var(--ligne); }
+    #faq summary { cursor:pointer; font-weight:700; font-size:1.04rem; color:var(--marine); padding:20px 4px; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:14px; }
+    #faq summary::-webkit-details-marker { display:none; }
+    #faq summary::after { content:"+"; font-size:1.5rem; color:var(--bleu); font-weight:400; flex:none; }
+    #faq details[open] summary::after { content:"–"; }
+    #faq .rep { padding:0 4px 20px; color:var(--texte-doux); max-width:820px; }
+
+    /* ── 13. CTA final (section marine) ── */
+    #cta-final { background:var(--marine); background-image:radial-gradient(640px 320px at 110% 0%, rgba(0,95,171,.35), transparent 60%); }
+    .final-grille { display:grid; gap:34px; grid-template-columns:1fr; align-items:start; }
+    @media (min-width:920px){ .final-grille { grid-template-columns:1fr 1fr; gap:56px; } }
+    #cta-final h2 { color:#fff; }
+    #cta-final .kicker { color:var(--pale); }
+    .preuves-final { list-style:none; margin-top:22px; display:grid; gap:12px; font-size:1.02rem; color:#DCEBF3; }
+    .preuves-final li::before { content:"✓  "; color:var(--pale); font-weight:800; }
+    .tel-final { margin-top:24px; color:#BFD8E4; }
+    .tel-final a { color:#fff; font-weight:800; text-decoration:none; font-size:1.15rem; }
+
+    /* ── 14. Footer ── */
+    footer { background:var(--marine-fonce); color:#8FB2C4; padding:44px 0 36px; font-size:.88rem; text-align:center; }
+    footer .logo { justify-content:center; margin:0 auto; }
+    footer .tel-footer { display:inline-block; margin-top:16px; font-weight:800; color:#fff; font-size:1.1rem; text-decoration:none; }
+    footer p { margin-top:10px; }
+    footer a { color:#8FB2C4; }
+    .footer-liens { margin-top:14px; }
+
+    /* ── 15. Pop-up ── */
+    .popup-fond { position:fixed; inset:0; background:rgba(5,37,52,.66); z-index:1000; display:flex; align-items:center; justify-content:center; padding:20px; }
+    .popup { background:#fff; border-radius:20px; max-width:430px; width:100%; padding:36px 28px 30px; text-align:center; position:relative; box-shadow:0 30px 80px rgba(0,0,0,.35); overflow:hidden; }
+    .popup::before { content:""; position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,var(--bleu),var(--pale)); }
+    .popup h3 { font-size:1.4rem; color:var(--marine); line-height:1.2; letter-spacing:-.01em; }
+    .popup p { margin-top:12px; color:var(--texte-doux); }
+    .popup .cta { margin-top:20px; width:100%; }
+    .popup-fermer { position:absolute; top:12px; right:16px; background:none; border:none; font-size:1.7rem; color:var(--texte-doux); cursor:pointer; line-height:1; }
+
+    /* ── 16. Bannière Loi 25 ── */
+    .bandeau-cookies { position:fixed; bottom:0; left:0; right:0; z-index:1100; background:#fff; border-top:1px solid var(--ligne); box-shadow:0 -10px 34px rgba(8,55,76,.14); padding:16px 22px; }
+    .cookies-int { max-width:1140px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; gap:14px; font-size:.87rem; }
+    .cookies-int p { flex:1 1 320px; color:var(--texte-doux); }
+    .cookies-btns { display:flex; gap:10px; }
+    .btn-cookie { padding:11px 20px; border-radius:10px; font-weight:700; cursor:pointer; font-family:inherit; font-size:.9rem; }
+    .btn-accepter { background:var(--bleu); color:#fff; border:none; }
+    .btn-refuser { background:none; border:1px solid var(--ligne); color:var(--texte); }
+    .lien-cookie { text-decoration:underline; cursor:pointer; background:none; border:none; font-family:inherit; font-size:.87rem; color:var(--texte-doux); padding:0; }
+
+    /* ── Modal politique ── */
+    .modal-fond { position:fixed; inset:0; background:rgba(5,37,52,.66); z-index:1200; display:flex; align-items:center; justify-content:center; padding:20px; }
+    .modal { background:#fff; border-radius:20px; max-width:720px; width:100%; max-height:82vh; overflow-y:auto; padding:36px 30px; position:relative; }
+    .modal h3 { color:var(--marine); font-size:1.35rem; }
+    .modal h4 { margin-top:20px; font-size:1rem; color:var(--marine); }
+    .modal p, .modal li { font-size:.92rem; color:var(--texte-doux); margin-top:8px; }
+    .modal ul { padding-left:20px; }
+    [hidden] { display:none !important; }
+  </style>
+</head>
+<body id="top">
+
+  <!-- ═══════ 0. BANDEAU PROMO ═══════ -->
+  <div class="bandeau-promo">Nouveaux thermos dès <strong>24 $/mois</strong> · Garantis <strong>25 ans</strong> — <a href="#estimation" id="cta-bandeau">Obtenir ma soumission</a></div>
+
+  <!-- ═══════ 1. HEADER STICKY ═══════ -->
+  <header>
+    <div class="header-int">
+      <!-- Logo reconstruit en vectoriel (couleurs officielles du SVG : #005FAB / #5EADC8).
+           Au déploiement, peut être remplacé par le fichier officiel /assets/VP_LOGO_New.svg. -->
+      <a href="#top" class="logo" aria-label="Vitrerie Prestige">
+        <svg class="logo-mark" viewBox="0 0 120 216" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <polygon points="0,60 38,28 38,178 0,145" fill="#5EADC8"/>
+          <polygon points="70,8 118,40 118,175 70,208" fill="#5EADC8"/>
+        </svg>
+        <span class="logo-texte"><span class="logo-l1">VITRERIE</span><span class="logo-l2">PRESTIGE</span></span>
+      </a>
+      <!-- Règle agence : JAMAIS de numéro de téléphone du client sur la landing page -->
+      <div class="header-droite">
+        <a href="#estimation" class="cta cta-header" id="cta-header">Soumission gratuite</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════ 2. HERO ═══════
+       Message match — H1 par défaut aligné sur les axes 1-2 (buée / alternative économique).
+       Variantes selon l'axe de l'annonce source :
+       · Axe 3 (financement) : « Réglez vos fenêtres embuées à partir de 24 $ par mois »
+       · Axe 4 (garantie)    : « Vos nouveaux thermos installés en 2 semaines, garantis 25 ans » -->
+  <section id="hero">
+    <div class="conteneur hero-grille">
+      <div class="hero-haut">
+        <p class="kicker">Spécialistes du remplacement de thermos · Grand Montréal</p>
+        <h1>Fenêtres embuées? Changez juste le thermo et économisez des milliers de dollars.</h1>
+      </div>
+
+      <div class="form-carte" id="estimation">
+        <div data-form-instance="hero"></div>
+      </div>
+
+      <div class="hero-suite">
+        <p class="sous-titre">Dans la majorité des cas, vos cadres sont encore bons. On remplace uniquement le verre thermos : une fraction du prix d'une fenêtre neuve.</p>
+        <ul class="chips">
+          <li>Garantie <strong>25 ans</strong></li>
+          <li>Installé en <strong>2 semaines</strong></li>
+          <li>Dès <strong>24 $/mois</strong></li>
+          <li>Fraction du prix du neuf</li>
+        </ul>
+        <p class="preuve"><span class="etoiles">★★★★★</span> <strong>5,0/5</strong> · <strong>37</strong> avis Google · Des centaines de clients satisfaits</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ Marquee signature ═══════ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-int">
+      <span>Vitrerie Prestige</span><span>Vitrerie Prestige</span><span>Vitrerie Prestige</span><span>Vitrerie Prestige</span><span>Vitrerie Prestige</span><span>Vitrerie Prestige</span><span>Vitrerie Prestige</span><span>Vitrerie Prestige</span>
+    </div>
+  </div>
+
+  <!-- ═══════ 3. BARRE DE STATS ═══════ -->
+  <section id="stats">
+    <div class="conteneur stats-grille">
+      <div class="stat"><div class="chiffre">25 ans</div><div class="desc">de garantie sur vos thermos</div></div>
+      <div class="stat"><div class="chiffre">2 sem.</div><div class="desc">pour l'installation</div></div>
+      <div class="stat"><div class="chiffre">24 $/mois</div><div class="desc">financement disponible</div></div>
+      <div class="stat"><div class="chiffre">★ 5,0</div><div class="desc">37 avis Google</div></div>
+    </div>
+  </section>
+
+  <!-- ═══════ 4. PROBLÈME / AGITATION ═══════ -->
+  <section id="probleme">
+    <div class="conteneur">
+      <p class="kicker">Le problème</p>
+      <h2>De la buée entre vos vitres? Votre thermo n'est plus étanche.</h2>
+      <p class="sous-h2">Quand le scellant d'un thermo lâche, l'humidité s'infiltre entre les deux vitres. Et ça ne fait qu'empirer.</p>
+      <div class="douleurs">
+        <div class="douleur"><div class="emoji">😤</div><h3>Des fenêtres qui ont toujours l'air sales</h3><p>Vous avez beau laver, la buée est à l'intérieur du thermo. Impossible de voir clair.</p></div>
+        <div class="douleur"><div class="emoji">🦠</div><h3>Taches et moisissure entre les vitres</h3><p>L'humidité emprisonnée laisse des taches permanentes et peut développer de la moisissure.</p></div>
+        <div class="douleur"><div class="emoji">💸</div><h3>Une soumission de fenêtres neuves qui fait sursauter</h3><p>On vous a dit de tout remplacer? C'est la solution la plus chère — et souvent, c'est pas nécessaire.</p></div>
+      </div>
+      <div class="comparo">
+        <div class="comparo-carte mauvais">
+          <h3>Remplacer la fenêtre au complet</h3>
+          <ul>
+            <li>Des milliers de dollars par fenêtre</li>
+            <li>Des mois d'attente pour la livraison</li>
+            <li>Vous payez pour remplacer des cadres encore bons</li>
+            <li>Travaux plus longs et plus invasifs</li>
+          </ul>
+        </div>
+        <div class="comparo-carte bon">
+          <span class="badge-bon">La solution intelligente</span>
+          <h3>Changer juste le thermo avec Vitrerie Prestige</h3>
+          <ul>
+            <li>Une fraction du prix, pour le même résultat</li>
+            <li>Installé en aussi peu que 2 semaines</li>
+            <li>Garanti 25 ans</li>
+            <li>Financement dès 24 $/mois</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ 5. POURQUOI NOUS ═══════ -->
+  <section id="pourquoi">
+    <div class="conteneur">
+      <p class="kicker">Notre différence</p>
+      <h2>Pourquoi choisir Vitrerie Prestige?</h2>
+      <div class="benefices">
+        <div class="benefice"><div class="emoji">🎯</div><h3>Le thermo, c'est notre spécialité</h3><p>On ne vous vendra pas des fenêtres neuves si vos cadres sont encore bons. On remplace ce qui est fini, point.</p></div>
+        <div class="benefice"><div class="emoji">🛡️</div><h3>Garantie imbattable de 25 ans</h3><p>On est tellement confiants de la qualité de nos thermos qu'on les garantit 25 ans.</p></div>
+        <div class="benefice"><div class="emoji">⚡</div><h3>Installé en 2 semaines</h3><p>Pourquoi attendre des mois pour des fenêtres neuves? On règle votre problème rapidement.</p></div>
+        <div class="benefice"><div class="emoji">💳</div><h3>Accessible dès 24 $/mois</h3><p>Réglez votre problème sans vider votre compte de banque grâce à notre financement facile.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ 6. PROCESSUS ═══════ -->
+  <section id="processus">
+    <div class="conteneur">
+      <p class="kicker">Comment ça marche</p>
+      <h2>Simple comme 1, 2, 3</h2>
+      <div class="etapes">
+        <div class="etape"><span class="num">1</span><h3>Soumission gratuite et rapide</h3><p>Décrivez votre problème en 60 secondes. On vous revient vite avec un prix clair, sans surprise.</p></div>
+        <div class="etape"><span class="num">2</span><h3>Mesure et fabrication sur mesure</h3><p>On prend les mesures exactes et vos nouveaux thermos sont fabriqués sur mesure pour vos cadres actuels.</p></div>
+        <div class="etape"><span class="num">3</span><h3>Installation en 2 semaines</h3><p>Installation propre et professionnelle, sans changer vos cadres. Vous revoyez clair, garanti 25 ans.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ 7. CITATION GOOGLE ═══════ -->
+  <section class="citation">
+    <div class="conteneur">
+      <span class="etoiles">★★★★★</span>
+      <blockquote>« Service impeccable, équipe à l'écoute, minutieuse et attentive au détails. La qualité des travaux et des matériaux donnent un résultat sans comparable. Nous recommandons sans hésitation! »</blockquote>
+      <p class="auteur">— David Légaré · Avis Google vérifié</p>
+    </div>
+  </section>
+
+  <!-- ═══════ 8. FINANCEMENT ═══════ -->
+  <section id="finance">
+    <div class="conteneur">
+      <p class="kicker">Financement</p>
+      <h2>Économisez maintenant, payez à votre rythme!</h2>
+      <p class="sous-h2">Pas besoin de tout payer d'un coup : nos options de financement rendent vos nouveaux thermos accessibles.</p>
+      <div class="gros-chiffres">
+        <div class="gros-chiffre"><div class="valeur">24 $/mois</div><div class="desc">à partir de</div></div>
+        <div class="gros-chiffre"><div class="valeur">25 ans</div><div class="desc">de garantie incluse</div></div>
+        <div class="gros-chiffre"><div class="valeur">2 semaines</div><div class="desc">avant de revoir clair</div></div>
+      </div>
+      <ul class="points-fin">
+        <li>Plans de paiement adaptés à votre budget</li>
+        <li>Demande simple et réponse rapide</li>
+        <li>Financement en partenariat avec Financeit</li>
+        <li>Aucun dépôt requis</li>
+      </ul>
+      <p class="mention-credit">Financement offert en partenariat avec Financeit, sous réserve d'approbation de crédit.</p>
+      <a href="#estimation" class="cta" id="cta-finance">Vérifier mon admissibilité</a>
+    </div>
+  </section>
+
+  <!-- ═══════ 9. MUR DE TÉMOIGNAGES ═══════ -->
+  <section id="reviews">
+    <div class="conteneur">
+      <div class="centre">
+        <p class="kicker">Une réputation bâtie sur la qualité</p>
+        <h2>Des centaines de clients satisfaits partout dans la région</h2>
+        <p class="sous-h2"><span class="etoiles">★★★★★</span> <strong>5,0</strong> · 37 avis Google</p>
+      </div>
+      <div class="reviews-grille">
+        <div class="review"><span class="etoiles">★★★★★</span><p>« Excellent service du début à la fin. L'équipe de Vitrerie Prestige a été très professionnelle, ponctuelle et efficace. La qualité du travail est impeccable, les finitions sont soignées et le résultat final dépasse mes attentes. »</p><p class="auteur">Alex Yelle <span class="source">· Avis Google</span></p></div>
+        <div class="review"><span class="etoiles">★★★★★</span><p>« Vitrerie Prestige a fait un travail absolument impeccable chez moi. Leur équipe est professionnelle, ponctuelle et incroyablement minutieuse. »</p><p class="auteur">Shady Ajam <span class="source">· Avis Google</span></p></div>
+        <div class="review"><span class="etoiles">★★★★★</span><p>« Service impeccable, équipe à l'écoute, minutieuse et attentive au détails. La qualité des travaux et des matériaux donnent un résultat sans comparable. Nous recommandons sans hésitation! »</p><p class="auteur">David Légaré <span class="source">· Avis Google</span></p></div>
+        <div class="review"><span class="etoiles">★★★★★</span><p>« Très bonne équipe! À l'écoute de nos besoins. Belles installations, j'ai fais faire mon cellier et ma rampe d'escalier intérieur et ce printemps cela sera le tour de la rampe du patio. Je recommande. »</p><p class="auteur">Annie Bourassa <span class="source">· Avis Google</span></p></div>
+        <div class="review"><span class="etoiles">★★★★★</span><p>« They provided such friendly service!! I highly recommend this company for anyone who is looking for professional and meticulous workmanship when it comes to commercial or residential thermos installations. »</p><p class="auteur">Caroline Wallace <span class="source">· Avis Google</span></p></div>
+        <div class="review"><span class="etoiles">★★★★★</span><p>« Un service de qualité! Ils sont effectivement les meilleurs dans l'installation de cellier, rampe en vitre. Tout ce qui peut apporter une grosse plus-value à votre commerce et/ou propriété! Je les recommande! »</p><p class="auteur">Annabelle Filion <span class="source">· Avis Google</span></p></div>
+        <div class="review"><span class="etoiles">★★★★★</span><p>« Fantastic work from start to finish. The team was professional, reliable, and did an excellent job at my home. Highly recommend — so far the best in Quebec. »</p><p class="auteur">Ali Srour <span class="source">· Avis Google</span></p></div>
+        <div class="review"><span class="etoiles">★★★★★</span><p>« Service exceptionnel avec Vitrerie Prestige ! L'équipe est très professionnelle, ponctuelle et minutieuse. »</p><p class="auteur">Lorie-Kim Morneau <span class="source">· Avis Google</span></p></div>
+        <div class="review"><span class="etoiles">★★★★★</span><p>« Service rapide et professionnel. Merci les gars pour votre bon travail! »</p><p class="auteur">TOUTITOUTI INC <span class="source">· Avis Google</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ 10. CERTIFICATIONS ═══════
+       Seul partenaire confirmé : Financeit (logo à insérer si souhaité).
+       Ne PAS ajouter d'autres logos sans confirmation du client. -->
+
+  <!-- ═══════ 12. FAQ ═══════ -->
+  <section id="faq">
+    <div class="conteneur">
+      <p class="kicker">On répond à vos questions</p>
+      <h2>Questions fréquentes</h2>
+      <div class="faq-liste">
+        <details><summary>Comment savoir si mon thermo est à changer?</summary><p class="rep">Si vous voyez de la buée, de la condensation, des taches ou de la moisissure entre vos deux vitres, c'est le signe que le scellant de votre thermo n'est plus étanche. Le thermo est fini — mais pas nécessairement la fenêtre.</p></details>
+        <details><summary>Est-ce que je dois remplacer ma fenêtre au complet?</summary><p class="rep">Non, dans la majorité des cas. Si vos cadres sont encore en bon état, on remplace uniquement le verre thermos. C'est une fraction du prix d'une fenêtre neuve, pour le même résultat.</p></details>
+        <details><summary>Combien de temps ça prend?</summary><p class="rep">On installe vos nouveaux thermos en aussi peu que 2 semaines — pas en 3 ou 4 mois comme pour des fenêtres neuves. Vos thermos sont fabriqués sur mesure, puis installés proprement en une visite.</p></details>
+        <details><summary>C'est quoi la garantie?</summary><p class="rep">Nos thermos sont garantis 25 ans. On est tellement confiants de la qualité qu'on offre une des meilleures garanties de l'industrie.</p></details>
+        <details><summary>Combien ça coûte?</summary><p class="rep">Le prix dépend des dimensions et du nombre de thermos, mais c'est toujours une fraction du prix d'un remplacement complet de fenêtres. Avec notre financement en partenariat avec Financeit, c'est accessible à partir de 24 $/mois, sous réserve d'approbation de crédit. La soumission est gratuite et rapide.</p></details>
+        <details><summary>Desservez-vous ma région?</summary><p class="rep">On dessert le Grand Montréal, la Rive-Sud, la Rive-Nord, les Laurentides, Lanaudière et la Montérégie.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ 13. CTA FINAL + FORMULAIRE RÉPÉTÉ ═══════ -->
+  <section id="cta-final">
+    <div class="conteneur final-grille">
+      <div>
+        <p class="kicker">Dernière étape</p>
+        <h2>Prêt à revoir clair à travers vos fenêtres?</h2>
+        <ul class="preuves-final">
+          <li>★ 5,0 sur Google · 37 avis</li>
+          <li>Une fraction du prix d'une fenêtre neuve</li>
+          <li>Installation en 2 semaines seulement</li>
+          <li>Garantie 25 ans sur vos thermos</li>
+          <li>Financement dès 24 $/mois</li>
+        </ul>
+      </div>
+      <div class="form-carte">
+        <div data-form-instance="final"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ 14. FOOTER ═══════ -->
+  <footer>
+    <div class="conteneur">
+      <span class="logo" aria-label="Vitrerie Prestige">
+        <svg class="logo-mark" viewBox="0 0 120 216" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <polygon points="0,60 38,28 38,178 0,145" fill="#5EADC8"/>
+          <polygon points="70,8 118,40 118,175 70,208" fill="#5EADC8"/>
+        </svg>
+        <span class="logo-texte"><span class="logo-l1">VITRERIE</span><span class="logo-l2">PRESTIGE</span></span>
+      </span>
+      <!-- ⚠️ RBQ : à ajouter ici dès que le client fournit son numéro (introuvable au registre RBQ
+           sous « Vitrerie Prestige », recherche nom + téléphone, 2026-07-15).
+           Format : <p>RBQ : XXXX-XXXX-XX · NEQ : 1180094600</p> -->
+      <p>NEQ : 1180094600</p>
+      <p>© 2026 Vitrerie Prestige. Tous droits réservés.</p>
+      <p class="footer-liens"><a href="#" data-ouvre-politique>Politique de confidentialité</a> · <a href="#" data-ouvre-cookies>Loi 25 — Gérer les témoins</a></p>
+    </div>
+  </footer>
+
+  <!-- ═══════ 15. POP-UP DE RAPPEL D'OFFRE ═══════ -->
+  <div class="popup-fond" id="popup-offre" hidden>
+    <div class="popup" role="dialog" aria-modal="true" aria-labelledby="popup-titre">
+      <button class="popup-fermer" id="popup-fermer" aria-label="Fermer">×</button>
+      <h3 id="popup-titre">Vos thermos garantis 25 ans vous attendent!</h3>
+      <p>Réglez vos fenêtres embuées une fois pour toutes — dès 24 $/mois, installé en 2 semaines. La soumission est gratuite.</p>
+      <a href="#estimation" class="cta" id="cta-popup">Obtenir ma soumission gratuite</a>
+    </div>
+  </div>
+
+  <!-- ═══════ 16. LOI 25 — BANNIÈRE DE CONSENTEMENT ═══════ -->
+  <div class="bandeau-cookies" id="bandeau-cookies" hidden>
+    <div class="cookies-int">
+      <p>On utilise des témoins (cookies) à des fins publicitaires et de mesure (Meta, Google). Les témoins essentiels au fonctionnement de la page ne recueillent aucun renseignement personnel. Vous pouvez accepter ou refuser les témoins publicitaires. <button class="lien-cookie" data-ouvre-politique>Politique de confidentialité</button></p>
+      <div class="cookies-btns">
+        <button class="btn-cookie btn-refuser" id="cookies-refuser">Refuser</button>
+        <button class="btn-cookie btn-accepter" id="cookies-accepter">Accepter</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ MODAL POLITIQUE DE CONFIDENTIALITÉ ═══════ -->
+  <div class="modal-fond" id="modal-politique" hidden>
+    <div class="modal">
+      <button class="popup-fermer" id="politique-fermer" aria-label="Fermer">×</button>
+      <h3>Politique de confidentialité</h3>
+      <p>Dernière mise à jour : juillet 2026 · Vitrerie Prestige (NEQ 1180094600), 204 rue du Saint-Sacrement, suite 300, Montréal (Québec) H2Y 1W8.</p>
+      <h4>Renseignements que nous recueillons</h4>
+      <p>Lorsque vous remplissez notre formulaire de soumission : prénom, nom, numéro de téléphone, courriel, ville, ainsi que les réponses aux questions sur votre projet (type de problème, nombre de thermos).</p>
+      <h4>Finalités</h4>
+      <p>Ces renseignements servent uniquement à vous contacter pour préparer votre soumission gratuite et assurer le suivi de votre demande. Avec votre consentement, des témoins publicitaires servent aussi à mesurer l'efficacité de nos campagnes.</p>
+      <h4>Partage</h4>
+      <ul>
+        <li>GoHighLevel (CRM) : gestion de votre demande de soumission.</li>
+        <li>Meta et Google : mesure publicitaire, uniquement si vous avez accepté les témoins.</li>
+      </ul>
+      <p>Nous ne vendons ni ne louons vos renseignements personnels à des tiers.</p>
+      <h4>Conservation et sécurité</h4>
+      <p>Vos renseignements sont conservés le temps nécessaire au traitement de votre demande et aux suivis commerciaux raisonnables, puis supprimés ou anonymisés.</p>
+      <h4>Vos droits (Loi 25)</h4>
+      <p>Vous pouvez demander l'accès, la rectification ou la suppression de vos renseignements personnels, ou retirer votre consentement en tout temps.</p>
+      <h4>Responsable de la protection des renseignements personnels</h4>
+      <p>Vitrerie Prestige — info@vitrerie-prestige.com</p>
+    </div>
+  </div>
+
+  <script>
+  /* ══════════════════════════════════════════════════════════════
+     CONFIGURATION — À COMPLÉTER AVANT MISE EN LIGNE
+     ══════════════════════════════════════════════════════════════ */
+  var CONFIG = {
+    // ─── GoHighLevel (fournis par le client) ───
+    GHL_EXTERNAL_TRACKING_ID: 'tk_636076de42eb4b86b9901302dfb7c302', // = data-tracking-id du script external-tracking.js (chargé dans le <head>)
+    GHL_LOCATION_ID:          'fvi8uKCFrn6XxtfgfysD',
+    /* Le script external-tracking.js (chargé en tête) capture automatiquement la
+       soumission du formulaire ci-dessous et l'associe à la Location via le tracking ID.
+       Prérequis GHL (à faire dans TON compte GHL, sans le client) : ajouter le domaine
+       de déploiement — p. ex. vitrerie-prestige.vercel.app — dans
+       Settings → Business Profile → « Add domain for external form tracking ». */
+
+    // ─── Tracking (chargé UNIQUEMENT après consentement Loi 25) ───
+    META_PIXEL_ID: '2406208893520678',   // dataset ID Meta (fourni)
+    GTM_ID: '',                          // aucun ID GTM fourni → vide (optionnel)
+    /* ⚠️ Le TOKEN D'ACCÈS CAPI Meta ne va JAMAIS ici : il se configure côté
+       serveur, dans GHL → Settings → Integrations → Meta / Conversions API,
+       avec le dataset ID ci-dessus. */
+  };
+
+  /* ══════════ CAPTURE UTM — TOUJOURS, indépendamment du consentement Loi 25 ══════════
+     Ce ne sont pas des témoins de suivi : juste les paramètres d'URL d'attribution de
+     campagne avec lesquels le visiteur est arrivé, rattachés au lead qu'il soumet
+     volontairement. Capturés que la bannière soit acceptée, refusée ou ignorée. */
+  var UTM_CLES = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'];
+  var UTM = (function () {
+    var out = {};
+    try {
+      var p = new URLSearchParams(window.location.search);
+      UTM_CLES.forEach(function (k) {
+        var v = p.get(k);
+        if (v) { out[k] = v; try { sessionStorage.setItem('vp_' + k, v); } catch (e) {} }
+        else { try { var s = sessionStorage.getItem('vp_' + k); if (s) out[k] = s; } catch (e) {} }
+      });
+    } catch (e) {}
+    return out;
+  })();
+  function champsUTMcaches() {
+    // Champs cachés injectés dans le <form> pour que GHL capture les UTM avec le lead.
+    return UTM_CLES.map(function (k) {
+      return '<input type="hidden" name="' + k + '" value="' + (UTM[k] ? UTM[k].replace(/"/g, '&quot;') : '') + '">';
+    }).join('');
+  }
+
+  /* ══════════ FORMULAIRE MULTI-ÉTAPES (rendu 2x : hero + final) ══════════ */
+  var ETAPES = [
+    {
+      question: "C'est quoi le problème avec vos fenêtres?",
+      nom: 'probleme',
+      choix: [
+        { emoji: '🥶', libelle: "Vraiment froid l'hiver", micro: "Courants d'air, vitres glacées" },
+        { emoji: '🥵', libelle: "Vraiment chaud l'été", micro: 'La chaleur entre par les fenêtres' },
+        { emoji: '💧', libelle: 'Buée ou condensation', micro: "De l'humidité entre les deux vitres" },
+        { emoji: '🤔', libelle: 'Je ne suis pas sûr', micro: 'On vous le confirme gratuitement, sans engagement' }
+      ]
+    },
+    {
+      question: 'Combien de thermos à remplacer?',
+      nom: 'quantite',
+      reassurance: 'Un estimé suffit — aucun jugement, on ajuste sur place.',
+      choix: [
+        { emoji: '1️⃣', libelle: '1 à 2 thermos', micro: '' },
+        { emoji: '3️⃣', libelle: '3 à 5 thermos', micro: '' },
+        { emoji: '6️⃣', libelle: '6 thermos et plus', micro: '' },
+        { emoji: '🤷', libelle: 'Je ne sais pas encore', micro: '' }
+      ]
+    }
+  ];
+  var NB_ETAPES = ETAPES.length + 1; // + coordonnées
+
+  function rendreFormulaire(conteneur, instance) {
+    var etat = { etape: 0, reponses: {} };
+
+    function progression() {
+      return '<div class="progress"><div class="progress-libelle">Étape ' + (etat.etape + 1) + '/' + NB_ETAPES + '</div>' +
+             '<div class="progress-piste"><div class="progress-barre" style="width:' + Math.round(((etat.etape + 1) / NB_ETAPES) * 100) + '%"></div></div></div>';
+    }
+    function pied() {
+      return '<p class="reassurance">🔒 Vos infos restent confidentielles. Aucun spam. Sans engagement.</p>' +
+             '<p class="legal-form">En soumettant ce formulaire, vous acceptez d\'être contacté par Vitrerie Prestige.</p>';
+    }
+
+    function afficher() {
+      var html = '<p class="form-titre">Soumission 100 % gratuite</p>';
+      if (etat.etape < ETAPES.length) {
+        var e = ETAPES[etat.etape];
+        html += '<h3 class="form-question">' + e.question + '</h3>' + progression() + '<div class="choix-liste">';
+        e.choix.forEach(function (c, i) {
+          html += '<button type="button" class="choix" data-choix="' + i + '"><span class="emoji">' + c.emoji + '</span><span><span class="libelle">' + c.libelle + '</span>' + (c.micro ? '<span class="micro">' + c.micro + '</span>' : '') + '</span></button>';
+        });
+        html += '</div>';
+        if (e.reassurance) html += '<p class="reassurance">' + e.reassurance + '</p>';
+        if (etat.etape > 0) html += '<div class="form-nav"><button type="button" class="btn-retour" data-retour>← Retour</button></div>';
+        html += pied();
+      } else {
+        html += '<h3 class="form-question">Dernière étape : où envoyer votre soumission?</h3>' + progression();
+        html += '<div class="rappel-offre">💰 Dès <strong>24 $/mois</strong> · Garantie <strong>25 ans</strong> · Installé en <strong>2 semaines</strong></div>';
+        // Noms de champs standard reconnus par la capture GHL (external-tracking.js).
+        html += '<form class="champs" data-ghl-form novalidate>' +
+          '<input type="text" name="first_name" placeholder="Prénom *" required autocomplete="given-name">' +
+          '<input type="text" name="last_name" placeholder="Nom" autocomplete="family-name">' +
+          '<input type="tel" name="phone" placeholder="Téléphone *" required autocomplete="tel">' +
+          '<input type="email" name="email" placeholder="Courriel" autocomplete="email">' +
+          '<input type="text" name="city" placeholder="Ville" autocomplete="address-level2">' +
+          champsUTMcaches() +
+          // Champs custom GHL — clé NUE, sans préfixe « contact. » (comme les champs standards
+          // first_name/email/phone qui se mappent correctement). Le préfixe faisait échouer le mapping.
+          '<input type="hidden" name="quel_est_le_problme_avec_vos_fentres" value="' + (etat.reponses.probleme || '').replace(/"/g, '&quot;') + '">' +
+          '<input type="hidden" name="combien_de_thermos__remplacer" value="' + (etat.reponses.quantite || '').replace(/"/g, '&quot;') + '">' +
+          '<div class="form-nav"><button type="button" class="btn-retour" data-retour>← Retour</button>' +
+          '<button type="submit" class="cta cta-bloc" id="cta-form-' + instance + '">Obtenir ma soumission gratuite</button></div>' +
+          '</form>' + pied();
+      }
+      conteneur.innerHTML = html;
+
+      conteneur.querySelectorAll('[data-choix]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var e = ETAPES[etat.etape];
+          etat.reponses[e.nom] = e.choix[parseInt(btn.getAttribute('data-choix'), 10)].libelle;
+          etat.etape++;
+          afficher();
+        });
+      });
+      var retour = conteneur.querySelector('[data-retour]');
+      if (retour) retour.addEventListener('click', function () { etat.etape--; afficher(); });
+
+      var form = conteneur.querySelector('form');
+      if (form) form.addEventListener('submit', function (ev) {
+        // On NE bloque PAS la propagation : le listener document de external-tracking.js
+        // (phase capture) lit les champs AVANT ce handler. On empêche seulement la
+        // navigation par défaut pour afficher notre écran de confirmation.
+        ev.preventDefault();
+        var prenom = form.first_name.value.trim(), tel = form.phone.value.trim();
+        if (!prenom || !tel) {
+          if (!prenom) form.first_name.style.borderColor = '#C0392B';
+          if (!tel) form.phone.style.borderColor = '#C0392B';
+          return;
+        }
+        etat.reponses.prenom = prenom;
+        etat.reponses.nom = form.last_name.value.trim();
+        etat.reponses.telephone = tel;
+        etat.reponses.courriel = form.email.value.trim();
+        etat.reponses.ville = form.city.value.trim();
+        soumettre(etat.reponses, conteneur);
+      });
+    }
+    afficher();
+  }
+
+  function soumettre(donnees, conteneur) {
+    /* ══════════════════════════════════════════════════════════
+       INTÉGRATION GOHIGHLEVEL
+       La capture du lead est faite par external-tracking.js (chargé dans le <head>),
+       qui intercepte la soumission du <form data-ghl-form> (champs first_name,
+       last_name, phone, email, city) et l'envoie à la Location CONFIG.GHL_LOCATION_ID.
+       Rien à poster manuellement ici — l'événement submit réel (non stoppé) suffit.
+       ══════════════════════════════════════════════════════════ */
+
+    // Événements de conversion
+    // fbq : uniquement si le pixel est chargé (donc consentement Loi 25 accordé)
+    if (window.fbq) fbq('track', 'Lead', { content_name: donnees.probleme, content_category: donnees.quantite });
+    if (window.dataLayer) dataLayer.push(Object.assign({ event: 'generate_lead', probleme: donnees.probleme, quantite: donnees.quantite }, UTM));
+
+    window.__conversion = true; // bloque le pop-up après conversion
+    conteneur.innerHTML =
+      '<div class="form-succes"><div class="gros">✅</div><h3>Merci ' + donnees.prenom.replace(/[<>&"]/g, '') + '!</h3>' +
+      '<p>Votre demande est bien reçue. Un membre de l\'équipe Vitrerie Prestige vous contacte rapidement avec votre soumission gratuite.</p></div>';
+  }
+
+  document.querySelectorAll('[data-form-instance]').forEach(function (c) {
+    rendreFormulaire(c, c.getAttribute('data-form-instance'));
+  });
+
+  /* ══════════ LOI 25 — CONSENTEMENT & CHARGEMENT DES PIXELS ══════════ */
+  function lireConsentement() {
+    try { return localStorage.getItem('vp_consentement'); } catch (e) { return null; }
+  }
+  function ecrireConsentement(v) {
+    try { localStorage.setItem('vp_consentement', v); } catch (e) {}
+  }
+
+  function loadMarketingTags() {
+    // ─── Pixel Meta (dataset ID : 2406208893520678) ───
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', CONFIG.META_PIXEL_ID);
+    fbq('track', 'PageView');
+
+    // ─── Google Tag Manager (si un ID est fourni) ───
+    if (CONFIG.GTM_ID) {
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+      f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',CONFIG.GTM_ID);
+    } else {
+      window.dataLayer = window.dataLayer || [];
+    }
+  }
+
+  var bandeauCookies = document.getElementById('bandeau-cookies');
+  var consentement = lireConsentement();
+  if (consentement === 'accepte') {
+    loadMarketingTags();
+  } else if (consentement !== 'refuse') {
+    bandeauCookies.hidden = false;
+  }
+  document.getElementById('cookies-accepter').addEventListener('click', function () {
+    ecrireConsentement('accepte'); bandeauCookies.hidden = true; loadMarketingTags();
+  });
+  document.getElementById('cookies-refuser').addEventListener('click', function () {
+    ecrireConsentement('refuse'); bandeauCookies.hidden = true;
+  });
+
+  /* ══════════ MODAL POLITIQUE DE CONFIDENTIALITÉ ══════════ */
+  var modalPolitique = document.getElementById('modal-politique');
+  document.querySelectorAll('[data-ouvre-politique]').forEach(function (el) {
+    el.addEventListener('click', function (ev) { ev.preventDefault(); modalPolitique.hidden = false; });
+  });
+  document.querySelectorAll('[data-ouvre-cookies]').forEach(function (el) {
+    el.addEventListener('click', function (ev) {
+      ev.preventDefault();
+      try { localStorage.removeItem('vp_consentement'); } catch (e) {}
+      bandeauCookies.hidden = false;
+    });
+  });
+  document.getElementById('politique-fermer').addEventListener('click', function () { modalPolitique.hidden = true; });
+  modalPolitique.addEventListener('click', function (ev) { if (ev.target === modalPolitique) modalPolitique.hidden = true; });
+
+  /* ══════════ POP-UP DE RAPPEL D'OFFRE ══════════
+     · Desktop : intention de sortie (souris vers la barre d'onglets)
+     · Mobile  : 40 s OU 50 % de scroll
+     · 1 seule fois par session · jamais pendant la saisie · jamais après conversion */
+  var popup = document.getElementById('popup-offre');
+  function popupDejaVu() {
+    try { return sessionStorage.getItem('vp_popup') === '1'; } catch (e) { return window.__popupVu === true; }
+  }
+  function marquerPopupVu() {
+    try { sessionStorage.setItem('vp_popup', '1'); } catch (e) { window.__popupVu = true; }
+  }
+  function saisieEnCours() {
+    var a = document.activeElement;
+    return a && (a.tagName === 'INPUT' || a.tagName === 'TEXTAREA' || (a.closest && a.closest('.form-carte')));
+  }
+  function montrerPopup() {
+    if (popupDejaVu() || window.__conversion || saisieEnCours()) return;
+    marquerPopupVu();
+    popup.hidden = false;
+  }
+  function fermerPopup() { popup.hidden = true; }
+  document.getElementById('popup-fermer').addEventListener('click', fermerPopup);
+  document.getElementById('cta-popup').addEventListener('click', fermerPopup);
+  popup.addEventListener('click', function (ev) { if (ev.target === popup) fermerPopup(); });
+
+  var estTactile = window.matchMedia('(pointer: coarse)').matches;
+  if (estTactile) {
+    setTimeout(montrerPopup, 40000);
+    window.addEventListener('scroll', function () {
+      var h = document.documentElement;
+      if ((h.scrollTop + window.innerHeight) / h.scrollHeight >= 0.5) montrerPopup();
+    }, { passive: true });
+  } else {
+    document.addEventListener('mouseout', function (ev) {
+      if (!ev.relatedTarget && ev.clientY <= 0) montrerPopup();
+    });
+  }
+  </script>
+</body>
+</html>
